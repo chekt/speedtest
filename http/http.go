@@ -13,8 +13,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/kylegrantlucas/speedtest/coords"
-	stxml "github.com/kylegrantlucas/speedtest/xml"
+	"github.com/chekt/speedtest/coords"
+	stxml "github.com/chekt/speedtest/xml"
 )
 
 const max = "max"

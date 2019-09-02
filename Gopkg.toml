@@ -27,7 +27,7 @@
 
 [[constraint]]
   branch = "master"
-  name = "github.com/dchest/uniuri"
+  name = "github.com/chekt/uniuri"
 
 [prune]
   go-tests = true
