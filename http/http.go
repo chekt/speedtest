@@ -21,10 +21,11 @@ const max = "max"
 
 // Config struct holds our config (users current ip, lat, lon and isp)
 type Config struct {
-	IP  string
-	Lat float64
-	Lon float64
-	Isp string
+	IP        string
+	Lat       float64
+	Lon       float64
+	Isp       string
+	IspRating float64
 }
 
 // Client define a Speedtest HTTP client
@@ -172,6 +173,8 @@ func (stClient *Client) GetConfig() (c Config, err error) {
 	}
 
 	c.Isp = cx.Client.Isp
+
+	c.IspRating, _ = strconv.ParseFloat(cx.Client.IspRating, 64)
 
 	return c, err
 }

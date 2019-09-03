@@ -6,10 +6,11 @@ import (
 
 // TheClient is our users information
 type TheClient struct {
-	IP  string `xml:"ip,attr"`
-	Lat string `xml:"lat,attr"`
-	Lon string `xml:"lon,attr"`
-	Isp string `xml:"isp,attr"`
+	IP        string `xml:"ip,attr"`
+	Lat       string `xml:"lat,attr"`
+	Lon       string `xml:"lon,attr"`
+	Isp       string `xml:"isp,attr"`
+	IspRating string `xml:"isprating,attr"`
 }
 
 // XMLConfigSettings is a container for settings
