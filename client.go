@@ -62,7 +62,7 @@ func NewDefaultClient() (*Client, error) {
 		UserAgent:       "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.21 Safari/537.36",
 	}
 
-	httpClient, err := http.NewClient(config, 30*time.Second)
+	httpClient, err := http.NewClient(config, 60*time.Second)
 	if err != nil {
 		return &Client{}, err
 	}
@@ -95,6 +95,7 @@ func (client *Client) Download(server http.Server) (float64, error) {
 	for u := range urls {
 		dlSpeed, err := client.HTTPClient.DownloadSpeed(urls[u])
 		if err != nil {
+			err = fmt.Errorf("DownloadSpeed ERR: %s: url: %s", err.Error(), urls[u])
 			return 0, err
 		}
 
@@ -129,6 +130,7 @@ func (client *Client) Upload(server http.Server) (float64, error) {
 		r := util.Urandom(ulsize[i])
 		ulSpeed, err := client.HTTPClient.UploadSpeed(server.URL, "text/xml", r)
 		if err != nil {
+			err = fmt.Errorf("UploadSpeed ERR: %s: url: %s", err.Error(), server.URL)
 			return 0, err
 		}
 
